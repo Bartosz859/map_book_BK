@@ -98,7 +98,9 @@ def show_user_details():
     surname=users[i].surname
     location=users[i].location
     post=users[i].post
-
+    label_szczegoly_name_wartosc.config(text=name)
+    label_szczegoly_surname_wartosc.config(text=surname)
+    label_szczegoly_location_wartosc.config(text=location)
 
     map_widget.set_position(users[i].coordinates[0],users[i].coordinates[1])
     map_widget.set_zoom(17)
@@ -149,11 +151,13 @@ entry_posts.grid(row=4, column=1)
 label_szczegoly_obiektow=Label(ramka_szczegoly_obiektow, text="Szczegoly obiektu:")
 label_szczegoly_obiektow.grid(row=0, column=0)
 label_szczegoly_name=Label(ramka_szczegoly_obiektow, text="Imię:")
-
-
+label_szczegoly_name.grid(row=1, column=8)
+label_szczegoly_name_wartosc=Label(ramka_szczegoly_obiektow, text="....")
+label_szczegoly_name_wartosc.grid(row=1, column=1)
 label_szczegoly_surname=Label(ramka_szczegoly_obiektow, text="Nazwisko:")
 label_szczegoly_surname.grid(row=0, column=2)
-
+label_szczegoly_surname_wartosc=Label(ramka_szczegoly_obiektow, text="....")
+label_szczegoly_surname_wartosc.grid(row=1, column=4)
 label_szczegoly_location=Label(ramka_szczegoly_obiektow, text="Miejscowość:")
 label_szczegoly_location.grid(row=1, column=2)
 
