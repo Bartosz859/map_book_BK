@@ -2,6 +2,45 @@ from tkinter import *
 
 import tkintermapview
 
+users:list=[]
+
+def add_user():
+    zmienna_imie=name.get()
+    zmienna_imie=entry_surname.get()
+    zmienna_miejscowosc=entry_location.get()
+    zmienna_post=entry_posts.get()
+    user={'name':zmienna_imie,'surname':zmienna_nazwisko,'location':zmienna_miejscowosc,'post':zmienna_post}
+    users.append(user)
+
+    entry_name.delete(0,END)
+    entry_surname.delete(0,END)
+    entry_location.delete(0,END)
+    entry_posts.delete(0,END)
+
+
+    entry_name.focus()
+
+    show_users()
+
+    print(users)
+
+
+    def show_users():
+        listbox_lista_obiektow.delete(0,END)
+        for user in users:
+            listbox_lista_obiektow.insert(idx,f{idx+1}, {user['name']})
+
+def remove_user():
+    listbox_lista_obiektow.index(ACTIVE)
+
+
+def edit_user():
+    i=listbox_lista_obiektow.index(ACTIVE)
+    name=users[i]['name']
+    entry_name.insert(0,name)
+
+
+
 root = Tk()
 root.geometry("1200x760")
 root.title("Map Book Bk")
@@ -50,7 +89,7 @@ entry_location.grid(row=3, column=1)
 entry_posts=Entry(ramka_formularz)
 entry_posts.grid(row=4, column=1)
 
-button_dodaj_obiekt=Button(ramka_formularz, text='dodaj obiekt')
+button_dodaj_obiekt=Button(ramka_formularz, text='dodaj obiekt',command=add_user())
 button_dodaj_obiekt.grid(row=5, column=0, columnspan=2)
 
 #ramka_szczegoly_obiektow
@@ -83,3 +122,9 @@ map_widget.set_zoom(6)
 
 
 root.mainloop()
+
+
+
+
+
+
